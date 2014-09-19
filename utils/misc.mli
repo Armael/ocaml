@@ -347,3 +347,12 @@ module type HookSig = sig
 end
 
 module MakeHooks : functor (M : sig type t end) -> HookSig with type t = M.t
+
+(* begin easytype *)
+(* Helper function to break a string that represents a type into
+   multiple lines of fixed width, indenting lines after the first one.
+   The function returns a list of strings.
+   This code is used to report type errors related to applications
+   in the form of a table. *)
+val string_break_into_lines : int -> int -> string -> string list
+(* end easytype *)

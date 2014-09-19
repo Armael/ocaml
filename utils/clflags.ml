@@ -176,6 +176,8 @@ let rounds () =
   | None -> !default_simplify_rounds
   | Some r -> r
 
+let easy_type_errors = ref false       (* -easy-type-errors *)
+
 let default_inline_threshold = if Config.flambda then 10. else 10. /. 8.
 let inline_toplevel_multiplier = 16
 let default_inline_toplevel_threshold =

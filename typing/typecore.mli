@@ -55,7 +55,7 @@ val type_exp:
 val type_approx:
         Env.t -> Parsetree.expression -> type_expr
 val type_argument:
-        Env.t -> Parsetree.expression ->
+         ?easytype: Typedtree.expression option -> Env.t -> Parsetree.expression ->
         type_expr -> type_expr -> Typedtree.expression
 
 val option_some: Typedtree.expression -> Typedtree.expression
@@ -69,6 +69,8 @@ val force_delayed_checks: unit -> unit
 val name_pattern : string -> Typedtree.case list -> Ident.t
 
 val self_coercion : (Path.t * Location.t list ref) list ref
+
+type easytype_reporter = Format.formatter -> Printtyp.easytype_pieces -> unit
 
 type error =
     Polymorphic_label of Longident.t
@@ -128,6 +130,8 @@ type error =
   | Illegal_letrec_expr
   | Illegal_class_expr
   | Unbound_value_missing_rec of Longident.t * Location.t
+  | Expr_type_clash_easytype of easytype_reporter * (type_expr * type_expr) list
+  | Apply_error_easytype of (Format.formatter -> unit) * Location.t * error
 
 exception Error of Location.t * Env.t * error
 exception Error_forward of Location.error

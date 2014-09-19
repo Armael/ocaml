@@ -54,6 +54,8 @@ open Btype
 
 (**** Errors ****)
 
+let use_easy_type_errors = ref false 
+
 exception Unify of (type_expr * type_expr) list
 
 exception Tags of label * label

@@ -18,6 +18,7 @@
 
 module type Common_options = sig
   val _absname : unit -> unit
+  val _easy_type_errors : unit -> unit
   val _I : string -> unit
   val _labels : unit -> unit
   val _alias_deps : unit -> unit
