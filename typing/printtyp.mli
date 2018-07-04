@@ -80,6 +80,14 @@ val report_unification_error:
     ?type_expected_explanation:(formatter -> unit) ->
     (formatter -> unit) -> (formatter -> unit) ->
     unit
+
+(* begin easytype *)
+type easytype_piece = formatter -> unit -> unit
+type easytype_pieces = (easytype_piece * easytype_piece * easytype_piece * easytype_piece)
+val get_unification_error_easytype:
+    Env.t -> ?unif:bool -> (type_expr * type_expr) list -> easytype_pieces
+(* end easytype *)
+
 val report_subtyping_error:
     formatter -> Env.t -> (type_expr * type_expr) list ->
     string -> (type_expr * type_expr) list -> unit

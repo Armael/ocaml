@@ -18,6 +18,8 @@
 open Asttypes
 open Types
 
+val use_easy_type_errors : bool ref
+
 exception Unify of (type_expr * type_expr) list
 exception Tags of label * label
 exception Subtype of
