@@ -764,12 +764,8 @@ fun (x : 'a t as 'a) -> ();;
 [%%expect{|
 - : ('a t as 'a) -> unit = <fun>
 |}];;
-fun (x : 'a t) -> (x : 'a); ();;
+fun (x : 'a t) -> ignore (x : 'a); ();;
 [%%expect{|
-Line _, characters 18-26:
-  fun (x : 'a t) -> (x : 'a); ();;
-                    ^^^^^^^^
-Warning 10: this expression should have type unit.
 - : ('a t as 'a) t -> unit = <fun>
 |}];;
 

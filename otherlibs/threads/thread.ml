@@ -128,7 +128,7 @@ let create fn arg =
   thread_new
     (fun () ->
       try
-        fn arg; exit()
+        ignore (fn arg); exit()
       with x ->
         flush stdout; flush stderr;
         thread_uncaught_exception x;
